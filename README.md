@@ -23,8 +23,8 @@
 ## 四、致谢
 
 本应用使用开源项目：
-- [python-barcode]() 用于一维条码的生成
-- [python-qrcode]() 用于二维码的生成
-- [pyguiadapter]() 用于生成用户界面，从某种程度上讲，本应用目的之一就是为了演示pyguiadapter的使用及其各方面特性
+- [python-barcode](https://github.com/WhyNotHugo/python-barcode) 用于一维条码的生成
+- [qrcode](https://github.com/lincolnloop/python-qrcode) 用于二维码的生成
+- [PyGUIAdapter](https://github.com/zimolab/PyGUIAdapter) 用于生成用户界面，从某种程度上讲，本应用目的之一就是为了演示pyguiadapter的使用及其各方面特性
 
 感谢以上及其他未列明的开源项目。
