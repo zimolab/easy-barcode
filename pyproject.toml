@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "easy-barcode"
+version = "0.1.0"
+description = "一个简单的条形码生成工具，可以生成一维条形码、二维码，具有条码批量生成功能，提供简单GUI界面用以调整生成参数"
+authors = ["zimolab <zimolab@aliyun.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyguiadapter = "^0.3.2"
+qrcode = {extras = ["pil"], version = "^7.4.2"}
+python-barcode = {extras = ["images"], version = "^0.15.1"}
+
+[tool.poetry.group.dev.dependencies]
+mako = "^1.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
