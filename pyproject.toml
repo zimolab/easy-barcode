@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "一个简单的条形码生成工具，可以生成一维条形码、二维码，具有条码批量生成功能，提供简单GUI界面用以调整生成参数"
 authors = ["zimolab <zimolab@aliyun.com>"]
 readme = "README.md"
+repository = "https://github.com/zimolab/easy-barcode"
+homepage = "https://github.com/zimolab/easy-barcode"
+documentation = "https://github.com/zimolab/easy-barcode"
 
 [tool.poetry.dependencies]
 python = "^3.12"
