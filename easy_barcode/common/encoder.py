@@ -16,7 +16,7 @@ class BaseEncoder(object):
     def __init__(
         self,
         verbose: bool = False,
-        enable_timestamp: bool = False,
+        enable_timestamp: bool = True,
         timestamp_pattern: str = None,
     ):
         self._verbose = verbose
@@ -24,10 +24,25 @@ class BaseEncoder(object):
         self._timestamp_pattern = timestamp_pattern
 
     def _check_overwrite_behavior(
-        self, behavior: OverwriteBehavior, preview_only: bool, dest_filepath: str
+        self,
+        behavior: OverwriteBehavior,
+        preview_only: bool,
+        dest_path: str,
+        target_filename: str,
     ):
+
         if preview_only:
             return
+
+        if not target_filename:
+            self.error(ERR_MSG_EMPTY_DEST_FILEPATH)
+            raise ValueError(ERR_MSG_EMPTY_DEST_FILEPATH)
+
+        dest_filepath = os.path.join(dest_path, target_filename)
+        base_dir = os.path.dirname(dest_filepath)
+        if not os.path.isdir(base_dir):
+            os.makedirs(base_dir, exist_ok=True)
+
         if not os.path.isfile(dest_filepath):
             return
 
@@ -44,15 +59,15 @@ class BaseEncoder(object):
         else:
             self.warning(MS_OVERWRITE_ALLOWED)
 
-    @abc.abstractmethod
     def encode(
         self,
-        code: str,
-        preview_only: bool,
-        dest_path: str,
-        target_filename: str,
-        overwrite_behavior: str,
-        verbose: bool,
+        *,
+        code: str = None,
+        preview_only: bool = None,
+        dest_path: str = None,
+        target_filename: str = None,
+        overwrite_behavior: str = None,
+        verbose: bool = None,
         **kwargs,
     ):
         self._verbose = verbose is True
@@ -60,14 +75,14 @@ class BaseEncoder(object):
         if not isinstance(code, str):
             raise TypeError(f"code must be a string, but got {type(code)}")
 
-        if code.strip() == "":
+        if not code:
             self.error(ERR_MSG_EMPTY_CODE)
             raise ValueError(ERR_MSG_EMPTY_CODE)
 
         if not isinstance(dest_path, str):
             raise TypeError(f"dest_path must be a string, but got {type(dest_path)}")
 
-        if dest_path.strip() == "":
+        if not dest_path.strip():
             dest_path = DEFAULT_VALUE_DEST_PATH
 
         if not os.path.isdir(dest_path):
@@ -83,19 +98,15 @@ class BaseEncoder(object):
             raise TypeError(
                 f"overwrite_behavior must be a string, but got {type(overwrite_behavior)}"
             )
+        overwrite_behavior = ITEMS_OVERWRITE_BEHAVIOR.get(
+            overwrite_behavior, DEFAULT_VALUE_OVERWRITE_BEHAVIOR
+        )
         overwrite_behavior = OverwriteBehavior.value_of(
             overwrite_behavior, default=OverwriteBehavior.Ask
         )
 
-        dest_filepath = os.path.join(dest_path, target_filename)
-        base_dir = os.path.dirname(dest_filepath)
-        if not os.path.isdir(base_dir):
-            os.makedirs(base_dir, exist_ok=True)
-
         self._check_overwrite_behavior(
-            overwrite_behavior,
-            preview_only,
-            dest_filepath,
+            overwrite_behavior, preview_only, dest_path, target_filename
         )
 
     def debug(self, message: str):
