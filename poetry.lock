@@ -215,13 +215,13 @@ xmp = ["defusedxml"]
 
 [[package]]
 name = "pyguiadapter"
-version = "0.3.2"
+version = "0.3.3"
 description = "turn (almost) any python functions into a gui in a few lines of code"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "pyguiadapter-0.3.2-py3-none-any.whl", hash = "sha256:83c2ea3c312f0b843e8bad301d9175e1dd1ee4a357cfa7a0a18928f68b7b55f4"},
-    {file = "pyguiadapter-0.3.2.tar.gz", hash = "sha256:148b274a624223da302edaf8b07f0f78bb27dfaaaac2d83e00c28a1f531f6887"},
+    {file = "pyguiadapter-0.3.3-py3-none-any.whl", hash = "sha256:4b58ff25f3ef4bc8cebc82e0e19490a88f470caf0de2a8435d6de695b9259d4a"},
+    {file = "pyguiadapter-0.3.3.tar.gz", hash = "sha256:68faf051b60898b2f08ebd0af71537c3dc6e819706a9caffca0494bc006fde37"},
 ]
 
 [package.dependencies]
@@ -381,4 +381,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "c7d94c74464ea1e72c97c0ae28baa0095c8c063c48b2328502bd3cad4aabfb08"
+content-hash = "c0d39b34179612fb0c56e8a8a38c339ecd02921da5cc6042b33ebb7e86d4ae42"
