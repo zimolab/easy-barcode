@@ -27,5 +27,19 @@ def gen_base_encoder_configs():
     )
 
 
+def gen_barcode_encoder_configs():
+    from easy_barcode.barcode.encoder import BarcodeEncoder
+
+    output_dir = os.path.join(OUTPUT_DIR, "barcode_encoder")
+    prepare_output_dir(output_dir)
+
+    generator = get_configs_code_generator()
+
+    generator.generate_configs_file(
+        func=BarcodeEncoder.encode, dest_dir=output_dir, onefile=False
+    )
+
+
 if __name__ == "__main__":
     gen_base_encoder_configs()
+    gen_barcode_encoder_configs()
