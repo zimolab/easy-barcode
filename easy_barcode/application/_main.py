@@ -1,6 +1,6 @@
 from pyguiadapter import GUIAdapter
 
-from easy_barcode.barcode import BarcodeEncoder, BARCODE_ENCODE_CONFIGS
+from easy_barcode.barcode_1d import BarcodeEncoder, BARCODE_ENCODE_CONFIGS
 
 
 def apply_window_configs(gui_adapter: GUIAdapter):

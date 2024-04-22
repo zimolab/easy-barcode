@@ -24,6 +24,7 @@ ERR_MSG_EMPTY_DEST_FILEPATH = QApplication.tr("目标文件路径为空！")
 MSG_CREATE_DEST_PATH = QApplication.tr("目标路径不存在，将自动创建该路径！")
 MSG_ASK_OVERWRITE = QApplication.tr("目标文件已存在，是否允许覆盖该文件？")
 MS_OVERWRITE_ALLOWED = QApplication.tr("目标文件将被覆盖！")
+MSG_FILE_WILL_NOT_CREATED = QApplication.tr("仅预览模式下，不会生成文件！")
 
 CHECKBOX_PREVIEW_ONLY = QApplication.tr("是否仅预览？")
 CHECKBOX_VERBOSE = QApplication.tr("启用详细模式")
@@ -62,3 +63,5 @@ DEFAULT_VALUE_DEST_PATH = os.path.normcase(os.path.abspath("./"))
 DEFAULT_VALUE_TARGET_FILENAME = ""
 DEFAULT_VALUE_OVERWRITE_BEHAVIOR = ITEM_OVERWRITE_ASK
 DEFAULT_VALUE_VERBOSE = True
+
+PREVIEW_ONLY_FORMAT = ".png"

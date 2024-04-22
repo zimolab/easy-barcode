@@ -1,5 +1,8 @@
-import abc
+import base64
+import tempfile
 import os.path
+
+from typing import Any
 
 from pyguiadapter.interact import ulogging, uprint, upopup
 
@@ -50,7 +53,7 @@ class BaseEncoder(object):
             self.error(ERR_MSG_OVERWRITE_NOT_ALLOWED)
             raise OverwriteNotAllowed(ERR_MSG_OVERWRITE_NOT_ALLOWED)
         elif behavior == OverwriteBehavior.Ask:
-            if self.show_info_popup(MSG_ASK_OVERWRITE):
+            if self.show_question_popup(MSG_ASK_OVERWRITE):
                 self.warning(MS_OVERWRITE_ALLOWED)
                 return
             else:
@@ -93,6 +96,9 @@ class BaseEncoder(object):
             raise TypeError(
                 f"target_filename must be a string, but got {type(target_filename)}"
             )
+
+        if preview_only and target_filename:
+            self.warning(MSG_FILE_WILL_NOT_CREATED)
 
         if not isinstance(overwrite_behavior, str):
             raise TypeError(
@@ -141,6 +147,14 @@ class BaseEncoder(object):
                 timestamp_pattern=self._timestamp_pattern,
             )
 
+    def print_result(self, result: Any, preview_only: bool):
+        if preview_only:
+            result.seek(0)
+            image_data = result.read()
+            self.print_image_data(image_data, PREVIEW_ONLY_FORMAT)
+        else:
+            self.print_image(result)
+
     @staticmethod
     def show_info_popup(message: str, title: str = POPUP_TITLE_INFO):
         upopup.information(message, title)
@@ -164,3 +178,29 @@ class BaseEncoder(object):
     @staticmethod
     def print_image(image_path: str):
         uprint.uprint_image(image_path)
+
+    @staticmethod
+    def print_image_data(data: bytes, image_type: str):
+        encoded_data = base64.b64encode(data).decode("utf-8")
+        data_url = f"data:image/{image_type};base64,{encoded_data}"
+        uprint.uprint("\n")
+        uprint.uprint(f"<img src='{data_url}' />", html=True)
+        uprint.uprint("\n")
+
+    @staticmethod
+    def open_target_file(target_filepath: str, preview_only: bool):
+        if not preview_only:
+            return open(target_filepath, "wb")
+
+        tmp_file = tempfile.NamedTemporaryFile(
+            mode="wb+",
+            delete_on_close=True,
+            suffix=PREVIEW_ONLY_FORMAT,
+        )
+        return tmp_file
+
+    @staticmethod
+    def add_options_to(options: dict, **kvs):
+        for k, v in kvs.items():
+            if v is not None:
+                options[k] = v
