@@ -174,3 +174,4 @@ cython_debug/
 .idea/
 
 ./dev/generated_configs/
+/dev/generated_configs/*/*.*
