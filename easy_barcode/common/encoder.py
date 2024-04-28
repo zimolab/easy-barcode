@@ -2,7 +2,7 @@ import base64
 import tempfile
 import os.path
 
-from typing import Any
+from typing import Any, Union
 
 from pyguiadapter.interact import ulogging, uprint, upopup
 
@@ -85,8 +85,7 @@ class BaseEncoder(object):
         if not isinstance(dest_path, str):
             raise TypeError(f"dest_path must be a string, but got {type(dest_path)}")
 
-        if not dest_path.strip():
-            dest_path = DEFAULT_VALUE_DEST_PATH
+        dest_path = self._get_dest_path(dest_path)
 
         if not os.path.isdir(dest_path):
             self.warning(MSG_CREATE_DEST_PATH)
@@ -104,12 +103,8 @@ class BaseEncoder(object):
             raise TypeError(
                 f"overwrite_behavior must be a string, but got {type(overwrite_behavior)}"
             )
-        overwrite_behavior = ITEMS_OVERWRITE_BEHAVIOR.get(
-            overwrite_behavior, DEFAULT_VALUE_OVERWRITE_BEHAVIOR
-        )
-        overwrite_behavior = OverwriteBehavior.value_of(
-            overwrite_behavior, default=OverwriteBehavior.Ask
-        )
+
+        overwrite_behavior = self._get_overwrite_behavior(overwrite_behavior)
 
         self._check_overwrite_behavior(
             overwrite_behavior, preview_only, dest_path, target_filename
@@ -204,3 +199,30 @@ class BaseEncoder(object):
         for k, v in kvs.items():
             if v is not None:
                 options[k] = v
+
+    @staticmethod
+    def _get_dest_path(path: str) -> str:
+        path = path.strip()
+        if not path:
+            return DEFAULT_VALUE_DEST_PATH
+        return path
+
+    @staticmethod
+    def _get_overwrite_behavior(
+        behavior: Union[str, OverwriteBehavior, None]
+    ) -> OverwriteBehavior:
+        default_behavior = ITEMS_OVERWRITE_BEHAVIOR.get(
+            DEFAULT_VALUE_OVERWRITE_BEHAVIOR
+        )
+
+        if behavior is None:
+            return default_behavior
+
+        if isinstance(behavior, OverwriteBehavior):
+            return behavior
+
+        tmp = ITEMS_OVERWRITE_BEHAVIOR.get(behavior, None)
+        if tmp is not None:
+            return tmp
+
+        return OverwriteBehavior.value_of(behavior.upper(), default=default_behavior)

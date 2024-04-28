@@ -7,17 +7,17 @@ from function2widgets import (
 )
 from function2widgets import ColorEditArgs
 from function2widgets import ComboBox, ComboBoxArgs
-from function2widgets import DictEditor
-from function2widgets import DictEditorArgs
-from function2widgets import JsonEditor
-from function2widgets import JsonEditorArgs
-from function2widgets import LineEdit
-from function2widgets import LineEditArgs
-from function2widgets import Slider, SliderArgs
 from function2widgets import FilePathEdit, FilePathEditArgs
+from function2widgets import Slider, SliderArgs
+from pyguiadapter import get_param_widget_factory
 
 from easy_barcode.common.configs import UNIVERSAL_CONFIGS
 from ._constants import *
+from .widget import ColorsGroupWidget, ColorsGroupWidgetArgs
+
+_param_widget_factory = get_param_widget_factory()
+if not _param_widget_factory.is_registered(ColorsGroupWidget.__name__):
+    _param_widget_factory.register(ColorsGroupWidget.__name__, ColorsGroupWidget)
 
 QRCODE_ENCODE_CONFIGS = {
     **UNIVERSAL_CONFIGS,
@@ -92,28 +92,28 @@ QRCODE_ENCODE_CONFIGS = {
             step=1,
         ),
     },
-    "fill_color": {
-        "widget_class": ColorEdit.__name__,
-        "widget_args": ColorEditArgs(
-            parameter_name="AS-IS",
-            label=LABEL_FILL_COLOR,
-            description=DESCRIPTION_FILL_COLOR,
-            default=DEFAULT_VALUE_FILL_COLOR,
-            default_value_description=DEFAULT_VALUE_DESCRIPTION_FILL_COLOR,
-            with_alpha=False,
-        ),
-    },
-    "back_color": {
-        "widget_class": ColorEdit.__name__,
-        "widget_args": ColorEditArgs(
-            parameter_name="AS-IS",
-            label=LABEL_BACK_COLOR,
-            description=DESCRIPTION_BACK_COLOR,
-            default=DEFAULT_VALUE_BACK_COLOR,
-            default_value_description=DEFAULT_VALUE_DESCRIPTION_BACK_COLOR,
-            with_alpha=False,
-        ),
-    },
+    # "fill_color": {
+    #     "widget_class": ColorEdit.__name__,
+    #     "widget_args": ColorEditArgs(
+    #         parameter_name="AS-IS",
+    #         label=LABEL_FILL_COLOR,
+    #         description=DESCRIPTION_FILL_COLOR,
+    #         default=DEFAULT_VALUE_FILL_COLOR,
+    #         default_value_description=DEFAULT_VALUE_DESCRIPTION_FILL_COLOR,
+    #         with_alpha=False,
+    #     ),
+    # },
+    # "back_color": {
+    #     "widget_class": ColorEdit.__name__,
+    #     "widget_args": ColorEditArgs(
+    #         parameter_name="AS-IS",
+    #         label=LABEL_BACK_COLOR,
+    #         description=DESCRIPTION_BACK_COLOR,
+    #         default=DEFAULT_VALUE_BACK_COLOR,
+    #         default_value_description=DEFAULT_VALUE_DESCRIPTION_BACK_COLOR,
+    #         with_alpha=False,
+    #     ),
+    # },
     "module_drawer": {
         "widget_class": ComboBox.__name__,
         "widget_args": ComboBoxArgs(
@@ -164,23 +164,28 @@ QRCODE_ENCODE_CONFIGS = {
         ),
     },
     "color_mask_colors": {
-        "widget_class": DictEditor.__name__,
-        "widget_args": DictEditorArgs(
+        "widget_class": ColorsGroupWidget.__name__,
+        "widget_args": ColorsGroupWidgetArgs(
             parameter_name="AS-IS",
             label=LABEL_COLOR_MASK_COLORS,
             description=DESCRIPTION_COLOR_MASK_COLORS,
             default=DEFAULT_VALUE_COLOR_MASK_COLORS,
             default_value_description=DEFAULT_VALUE_DESCRIPTION_COLOR_MASK_COLORS,
+            columns=2,
+            colors=DEFAULT_COLOR_MASK_COLORS,
+            with_alpha=False,
         ),
     },
     "embeded_image_path": {
-        "widget_class": LineEdit.__name__,
-        "widget_args": LineEditArgs(
+        "widget_class": FilePathEdit.__name__,
+        "widget_args": FilePathEditArgs(
             parameter_name="AS-IS",
             label=LABEL_EMBEDED_IMAGE_PATH,
             description=DESCRIPTION_EMBEDED_IMAGE_PATH,
             default=DEFAULT_VALUE_EMBEDED_IMAGE_PATH,
             default_value_description=DEFAULT_VALUE_DESCRIPTION_EMBEDED_IMAGE_PATH,
+            button_text=BUTTON_EMBEDED_IMAGE_PATH,
+            filters=FILTERS_EMBEDED_IMAGE_PATH,
         ),
     },
 }

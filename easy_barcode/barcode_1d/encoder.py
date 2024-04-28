@@ -1,5 +1,8 @@
 import os.path
 
+from typing import Union
+
+from PyQt6.QtGui import QColor
 from barcode import get_barcode_class
 from barcode.writer import SVGWriter, ImageWriter
 
@@ -30,8 +33,8 @@ class BarcodeEncoder(BaseEncoder):
         font_path: str = None,
         font_size: int = None,
         text_distance: float = None,
-        background: Color = None,
-        foreground: Color = None,
+        background: Union[Color, QColor, str] = None,
+        foreground: Union[Color, QColor, str] = None,
         center_text: bool = None,
         verbose: bool = None,
     ):
@@ -49,11 +52,21 @@ class BarcodeEncoder(BaseEncoder):
         if "writer" in extra_args:
             del extra_args["writer"]
 
+        if isinstance(background, str):
+            background = Color.from_string(background)
+        if isinstance(background, QColor):
+            background = Color.from_qt_color(background)
         if background is None:
             background = DEFAULT_VALUE_BACKGROUND
 
+        if isinstance(foreground, str):
+            foreground = Color.from_string(foreground)
+        if isinstance(foreground, QColor):
+            foreground = Color.from_qt_color(foreground)
         if foreground is None:
             foreground = DEFAULT_VALUE_FOREGROUND
+
+        dest_path = self._get_dest_path(dest_path)
 
         _, ext = os.path.splitext(target_filename)
         is_svg_file = ext.lower() == ".svg"
