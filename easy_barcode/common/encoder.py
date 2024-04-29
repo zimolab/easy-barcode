@@ -49,6 +49,8 @@ class BaseEncoder(object):
         if not os.path.isfile(dest_filepath):
             return
 
+        print(type(behavior))
+
         if behavior == OverwriteBehavior.NotOverwrite:
             self.error(ERR_MSG_OVERWRITE_NOT_ALLOWED)
             raise OverwriteNotAllowed(ERR_MSG_OVERWRITE_NOT_ALLOWED)
@@ -214,6 +216,7 @@ class BaseEncoder(object):
         default_behavior = ITEMS_OVERWRITE_BEHAVIOR.get(
             DEFAULT_VALUE_OVERWRITE_BEHAVIOR
         )
+        default_behavior = OverwriteBehavior.value_of(default_behavior)
 
         if behavior is None:
             return default_behavior
@@ -223,6 +226,6 @@ class BaseEncoder(object):
 
         tmp = ITEMS_OVERWRITE_BEHAVIOR.get(behavior, None)
         if tmp is not None:
-            return tmp
+            return OverwriteBehavior.value_of(tmp)
 
         return OverwriteBehavior.value_of(behavior.upper(), default=default_behavior)

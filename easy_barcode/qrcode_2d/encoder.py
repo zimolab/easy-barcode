@@ -127,6 +127,10 @@ class QRCodeEncoder(BaseEncoder):
         else:
             required_colors = self._get_required_colors(color_mask, color_mask_colors)
             color_mask_ins = self._create_color_mask(color_mask_class, required_colors)
+
+        if is_output_svg:
+            color_mask_ins = None
+
         qr_obj = QRCode(
             version=version,
             error_correction=error_correction_value,
