@@ -9,6 +9,7 @@ from easy_barcode.qrcode_2d import QRCodeEncoder, QRCODE_ENCODE_CONFIGS
 
 from ._constants import *
 from .utils import get_app_style
+from .barcode_actions import barcode_menus
 
 
 def setup_windows(gui_adapter: GUIAdapter):
@@ -38,6 +39,10 @@ def setup_windows(gui_adapter: GUIAdapter):
     gui_adapter.execution_window_config.document_dock_config.title = (
         TEXT_DOCUMENT_DOCK_TITLE
     )
+    gui_adapter.execution_window_config.func_error_dialog_title = (
+        TEXT_ERROR_DIALOG_TITLE
+    )
+    gui_adapter.execution_window_config.enable_menubar_actions = True
 
 
 def start():
@@ -53,6 +58,7 @@ def start():
         widget_configs=BARCODE_ENCODE_CONFIGS,
         display_name=BARCODE_ENCODE_FUNC_NAME,
         display_document=BARCODE_ENCODE_FUNC_DESC,
+        menus=barcode_menus,
         window_title=BARCODE_ENCODE_FUNC_NAME,
     )
     gui_adapter.add(
