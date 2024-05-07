@@ -19,13 +19,30 @@ BUTTON_CLEAR_OUTPUT = QApplication.tr("清空输出")
 
 APP_STYLE_WINDOWS = None
 
+APP_NAME = QApplication.tr("简易条形码生成器")
+APP_DESCRIPTION = QApplication.tr(
+    "一个简单的条形码生成器，可以生成各种条形码、二维码，支持保存生成和加载生成配置、批量生成等功能。"
+)
+APP_LOGO_FILE = "logo.png"
+APP_VERSION = "0.0.1"
+APP_AUTHOR = "zimolab"
+APP_REPO_URL = "https://github.com/zimolab/easy-barcode"
+APP_LICENSE = "GPL 3.0"
+
+LICENSE_FILE = "License"
+
 MENU_FILE = QApplication.tr("文件")
 MENU_ABOUT = QApplication.tr("关于")
+MENU_VIEWS = QApplication.tr("视图")
 
 ACTION_SAVE_CONFIGS = QApplication.tr("保存配置")
 ACTION_LOAD_CONFIGS = QApplication.tr("加载配置")
 ACTION_ABOUT = QApplication.tr("关于")
 ACTION_HELP = QApplication.tr("帮助")
+ACTION_LICENSE = QApplication.tr("开源许可")
+
+ACTION_SHOW_DOCUMENT_DOCK = QApplication.tr("显示功能说明视图")
+ACTION_SHOW_OUTPUT_DOCK = QApplication.tr("显示输出试图")
 
 SHORTCUT_SAVE_CONFIGS = "Ctrl+S"
 SHORTCUT_LOAD_CONFIGS = "Ctrl+L"
@@ -36,3 +53,6 @@ FILE_FILTER_ALL_FILES = QApplication.tr("所有文件 (*.*)")
 FILE_FILTER_BARCODE_CONFIGS = QApplication.tr(
     "条形码配置文件 (*{0})".format(FILE_EXT_BARCODE_CONFIGS)
 )
+
+
+HELP_PAGE_URL = APP_REPO_URL

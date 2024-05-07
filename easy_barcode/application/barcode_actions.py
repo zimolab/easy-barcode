@@ -4,8 +4,10 @@ from function2widgets import Color
 from pyguiadapter.ui import ExecutionContext, ActionItem
 
 from ._constants import *
+from .common_actions import COMMON_MENUS
 from .utils import dump_json, load_json
 
+# 序列化时需忽略的键
 _IGNORED_KEYS = [
     "code",
     "target_filename",
@@ -70,5 +72,5 @@ _action_save = ActionItem(
 
 barcode_menus = {
     MENU_FILE: {ACTION_SAVE_CONFIGS: _action_save, ACTION_LOAD_CONFIGS: _action_load},
-    MENU_ABOUT: {},
+    **COMMON_MENUS,
 }

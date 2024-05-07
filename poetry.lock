@@ -216,17 +216,18 @@ xmp = ["defusedxml"]
 
 [[package]]
 name = "pyguiadapter"
-version = "0.3.6"
+version = "0.3.8"
 description = "turn (almost) any python functions into a gui in a few lines of code"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "pyguiadapter-0.3.6-py3-none-any.whl", hash = "sha256:0b0427f51236d7d62da8193d49d6087918623b9e68f2d1470ee49e276c40e7c8"},
-    {file = "pyguiadapter-0.3.6.tar.gz", hash = "sha256:1692b48649528915525f5ef0f909e9834237fc7cdc7a020010e6185138032e57"},
+    {file = "pyguiadapter-0.3.8-py3-none-any.whl", hash = "sha256:28a11ab032dc2bb6e8b4e1f44d3849da0a23fc12217315b40d6671de6fee49cf"},
+    {file = "pyguiadapter-0.3.8.tar.gz", hash = "sha256:3d39b686e8f23844ce1b68b0a369f53ed0c2c73d1acfe522b952f79eb7d22389"},
 ]
 
 [package.dependencies]
 function2widgets = ">=0.6.17"
+mako = ">=1.3.3,<2.0.0"
 
 [[package]]
 name = "pypng"
