@@ -10,7 +10,7 @@ from function2widgets import IntSpinBox, IntSpinBoxArgs
 from function2widgets import LineEdit
 from function2widgets import LineEditArgs
 
-from easy_barcode.common.configs import UNIVERSAL_CONFIGS
+from easy_barcode.base_encoder.configs import UNIVERSAL_CONFIGS
 from ._constants import *
 
 BARCODE_ENCODE_CONFIGS = {
@@ -81,7 +81,7 @@ BARCODE_ENCODE_CONFIGS = {
             description=DESCRIPTION_MODULE_WIDTH,
             default=DEFAULT_VALUE_MODULE_WIDTH,
             default_value_description=DEFAULT_VALUE_DESCRIPTION_MODULE_WIDTH,
-            min_value=0.1,
+            min_value=0.2,
             max_value=10.0,
             step=0.1,
             decimals=1,

@@ -10,9 +10,9 @@ from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.colormasks import QRColorMask, ImageColorMask
 from qrcode.image.styles.moduledrawers.base import QRModuleDrawer
 
-from easy_barcode.common.encoder import BaseEncoder
+from easy_barcode.base_encoder.encoder import BaseEncoder
 from ._constants import *
-from .module_drawer import ModuleDrawer
+from ._module_drawer import ModuleDrawer
 
 
 class QRCodeEncoder(BaseEncoder):

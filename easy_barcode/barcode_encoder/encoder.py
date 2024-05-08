@@ -6,7 +6,7 @@ from PyQt6.QtGui import QColor
 from barcode import get_barcode_class
 from barcode.writer import SVGWriter, ImageWriter
 
-from easy_barcode.common.encoder import BaseEncoder
+from easy_barcode.base_encoder.encoder import BaseEncoder
 from ._constants import *
 
 

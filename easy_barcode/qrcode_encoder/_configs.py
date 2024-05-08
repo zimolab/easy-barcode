@@ -1,19 +1,17 @@
+from function2widgets import ComboBox, ComboBoxArgs
+from function2widgets import FilePathEdit, FilePathEditArgs
 from function2widgets import (
-    ColorEdit,
     IntSpinBox,
     IntSpinBoxArgs,
     FloatSpinBox,
     FloatSpinBoxArgs,
 )
-from function2widgets import ColorEditArgs
-from function2widgets import ComboBox, ComboBoxArgs
-from function2widgets import FilePathEdit, FilePathEditArgs
 from function2widgets import Slider, SliderArgs
 from pyguiadapter import get_param_widget_factory
 
-from easy_barcode.common.configs import UNIVERSAL_CONFIGS
+from easy_barcode.base_encoder.configs import UNIVERSAL_CONFIGS
 from ._constants import *
-from .widget import ColorsGroupWidget, ColorsGroupWidgetArgs
+from ._widget import ColorsGroupWidget, ColorsGroupWidgetArgs
 
 _param_widget_factory = get_param_widget_factory()
 if not _param_widget_factory.is_registered(ColorsGroupWidget.__name__):

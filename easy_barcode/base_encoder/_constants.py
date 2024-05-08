@@ -2,7 +2,7 @@ import os.path
 
 from PyQt6.QtWidgets import QApplication
 
-from easy_barcode.common.overwrite_behavior import OverwriteBehavior
+from .overwrite_behavior import OverwriteBehavior
 
 ITEM_OVERWRITE_ASK = QApplication.tr("询问")
 ITEM_OVERWRITE_NOT_OVERWRITE = QApplication.tr("不覆盖")

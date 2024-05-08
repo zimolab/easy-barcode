@@ -16,8 +16,8 @@ from qrcode.image.styles.moduledrawers.svg import (
     SvgPathCircleDrawer,
 )
 
-from .module_drawer import ModuleDrawer
-from .color_mask import ColorMask
+from ._module_drawer import ModuleDrawer
+from ._color_mask import ColorMask
 
 FUNC_NAME = QApplication.tr("二维码生成器")
 FUNC_DESC = QApplication.tr("")

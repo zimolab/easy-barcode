@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QApplication
 from function2widgets import Color
 from barcode import PROVIDED_BARCODES
 
-FUNC_NAME = QApplication.tr("一维条形码生成器")
+FUNC_NAME = QApplication.tr("条形码生成器")
 FUNC_DESC = QApplication.tr("")
 
 BARCODE_TYPES = sorted(PROVIDED_BARCODES)

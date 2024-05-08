@@ -1,23 +1,31 @@
 from PyQt6.QtWidgets import QApplication
 
-TEXT_SELECTION_WINDOW_TITLE = QApplication.tr("条形码生成器")
-TEXT_DOCUMENT_LABEL = QApplication.tr("功能说明")
-TEXT_FUNC_LIST_LABEL = QApplication.tr("功能列表")
-TEXT_PARAM_GROUPBOX_TITLE = QApplication.tr("参数设置")
-TEXT_AUTOCLEAR_CHECKBOX = QApplication.tr("自动清空输出")
-TEXT_OUTPUT_DOCK_TITLE = QApplication.tr("输出")
-TEXT_DOCUMENT_DOCK_TITLE = QApplication.tr("功能说明")
-TEXT_ERROR_DIALOG_TITLE = QApplication.tr("错误")
-TEXT_INFO_DIALOG_TITLE = QApplication.tr("提示")
-TEXT_SAVE_CONFIGS_DIALOG_TITLE = QApplication.tr("保存配置")
-TEXT_LOAD_CONFIGS_DIALOG_TITLE = QApplication.tr("加载配置")
-TEXT_CONFIGS_SAVED_MESSAGE = QApplication.tr("配置已保存至：{}")
+from easy_barcode.res import get_res_file
+
+
+SELECTION_WINDOW_TITLE = QApplication.tr("条形码生成器")
+DOCUMENT_LABEL = QApplication.tr("功能说明")
+FUNC_LIST_LABEL = QApplication.tr("功能列表")
+PARAM_GROUPBOX_TITLE = QApplication.tr("参数设置")
+AUTOCLEAR_CHECKBOX_TEXT = QApplication.tr("自动清空输出")
+OUTPUT_DOCK_TITLE = QApplication.tr("输出")
+DOCUMENT_DOCK_TITLE = QApplication.tr("功能说明")
+ERROR_DIALOG_TITLE = QApplication.tr("错误")
+INFO_DIALOG_TITLE = QApplication.tr("提示")
+SAVE_CONFIGS_DIALOG_TITLE = QApplication.tr("保存配置")
+LOAD_CONFIGS_DIALOG_TITLE = QApplication.tr("加载配置")
+CONFIGS_SAVED_MESSAGE = QApplication.tr("配置已保存至：{}")
+FILE_NOT_FOUND_MESSAGE = QApplication.tr("文件不存在：{}")
 
 BUTTON_SELECTION_FUNC = QApplication.tr("选择")
 BUTTON_EXECUTE_FUNC = QApplication.tr("执行")
 BUTTON_CLEAR_OUTPUT = QApplication.tr("清空输出")
 
 APP_STYLE_WINDOWS = None
+
+WINDOW_ICON_FILE = get_res_file("icon.png")
+BARCODE_ICON_FILE = get_res_file("barcode.svg")
+QRCODE_ICON_FILE = get_res_file("qrcode.svg")
 
 APP_NAME = QApplication.tr("简易条形码生成器")
 APP_DESCRIPTION = QApplication.tr(
@@ -42,16 +50,20 @@ ACTION_HELP = QApplication.tr("帮助")
 ACTION_LICENSE = QApplication.tr("开源许可")
 
 ACTION_SHOW_DOCUMENT_DOCK = QApplication.tr("显示功能说明视图")
-ACTION_SHOW_OUTPUT_DOCK = QApplication.tr("显示输出试图")
+ACTION_SHOW_OUTPUT_DOCK = QApplication.tr("显示输出视图")
 
 SHORTCUT_SAVE_CONFIGS = "Ctrl+S"
 SHORTCUT_LOAD_CONFIGS = "Ctrl+L"
 
 FILE_EXT_BARCODE_CONFIGS = ".barcode"
+FILE_EXT_QRCODE_CONFIGS = ".qrcode"
 
-FILE_FILTER_ALL_FILES = QApplication.tr("所有文件 (*.*)")
 FILE_FILTER_BARCODE_CONFIGS = QApplication.tr(
     "条形码配置文件 (*{0})".format(FILE_EXT_BARCODE_CONFIGS)
+)
+
+FILE_FILTER_QRCODE_CONFIGS = QApplication.tr(
+    "二维码配置文件 (*{0})".format(FILE_EXT_QRCODE_CONFIGS)
 )
 
 

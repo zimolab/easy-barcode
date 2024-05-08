@@ -64,6 +64,7 @@ class BaseEncoder(object):
         else:
             self.warning(MS_OVERWRITE_ALLOWED)
 
+    # noinspection PyUnusedLocal
     def encode(
         self,
         *,

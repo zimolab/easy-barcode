@@ -4,13 +4,11 @@ from typing import Optional, List
 
 from PyQt6.QtWidgets import QStyleFactory
 
-from ._constants import APP_STYLE_WINDOWS
 
-
-def safe_del(obj: dict, key: str, *more_keys: str):
-    if key in obj:
-        del obj[key]
-    for key in more_keys:
+def safe_del(obj: dict, *keys: str):
+    if not keys:
+        return
+    for key in keys:
         if key in obj:
             del obj[key]
 
@@ -20,9 +18,9 @@ def is_windows() -> bool:
     return system_name.startswith("windows")
 
 
-def get_app_style() -> Optional[str]:
-    if is_windows() and APP_STYLE_WINDOWS in QStyleFactory.keys():
-        return APP_STYLE_WINDOWS
+def get_app_style(default_style: str) -> Optional[str]:
+    if is_windows() and default_style in QStyleFactory.keys():
+        return default_style
     return None
 
 
