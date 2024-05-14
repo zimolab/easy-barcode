@@ -2,8 +2,12 @@ from PyQt6.QtWidgets import QApplication
 from function2widgets import Color
 from barcode import PROVIDED_BARCODES
 
+from easy_barcode.res import read_res_file
+
+FUNC_DOC_FILE = "barcode_doc.html"
+
 FUNC_NAME = QApplication.tr("条形码生成器")
-FUNC_DESC = QApplication.tr("")
+FUNC_DESC = read_res_file(FUNC_DOC_FILE)
 
 BARCODE_TYPES = sorted(PROVIDED_BARCODES)
 
@@ -56,7 +60,7 @@ DESCRIPTION_BACKGROUND = QApplication.tr("背景颜色")
 DESCRIPTION_FOREGROUND = QApplication.tr("前景（文字）颜色")
 DESCRIPTION_CENTER_TEXT = QApplication.tr("文字是否居中")
 DESCRIPTION_EXTRA_ARGS = QApplication.tr(
-    "输入条码类型对应的额外参数，不同类型的条码可以有不同的参数，比如Code39条码接受add_checksum参数，UPC-A接受make_ean参数等等,"
+    "生成条码时额外提供的参数，不同类型的条码可以有不同的参数，比如Code39条码接受add_checksum参数，UPC-A接受make_ean参数等等,"
     "不同条码类型接受的额外的参数及其含义参见：<a href='https://python-barcode.readthedocs.io/en/stable/supported-formats.html'>"
     "python-barcode supported-formats</a>"
 )

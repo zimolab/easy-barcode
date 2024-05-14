@@ -1,0 +1,169 @@
+<style lang="css">
+    .param-item {
+        margin-bottom: 10px;
+    }
+    .param-title {
+        color: blue;
+        font-weight: bold;
+    }
+    .param-desc {
+
+    }
+</style>
+
+<div>
+    <p><b>功能描述</b></p>
+    <p>将指定数据编码成一维条形码，生成条形码图片，支持将生成的图片保存到本地，支持调整各种生成参数，支持各种条形码类型（格式）。</p>
+</div>
+
+<div>
+    <p><b>参数说明</b></p>
+    <ul id="param-list">
+        <li class="param-item">
+            <span class="param-title">条码类型</span>
+            <span class="param-desc">
+                支持生成Code 39、Code128、Code 128 、PZN7 (aka: PZN) 、EAN-13 、EAN-8 、JAN 、ISBN-13 、ISBN-10 、ISSN、UPC-A
+                EAN14、GS1-128等类型的条码，请根据待编码的数据特征及用途等选择合适的条码类型。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">待编码数据</span>
+            <span class="param-desc">
+                不同的条码类型，支持的待编码数据类型不同，例如UPC-A只接受12数字。如果待编码数据与条码类型不匹配，将导致编码失败。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">目标路径</span>
+            <span class="param-desc">
+                生成图片保存的路径，如果路径不存在，将自动创建。如果路径为空，则生成图片将保存到当前运行目录下。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">目标文件名</span>
+            <span class="param-desc">
+               生成图片的文件名，将根据文件名的后缀选择合适的图片格式。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">仅预览</span>
+            <span class="param-desc">
+               如果勾选，则不会生成图片文件，仅在输出区域预览。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">覆盖行为</span>
+            <span class="param-desc">
+                如果目标路径下存在同名文件，则根据此选项进行操作。
+            </span>
+            <ol>
+                <li class="param-item">
+                    <span>询问：</span>
+                    <span>
+                        生成前询问用户是否覆盖。
+                    </span>
+                </li>
+                <li class="param-item">
+                    <span>覆盖：</span>
+                    <span>
+                        直接覆盖。
+                    </span>
+                </li>
+                <li class="param-item">
+                    <span>不覆盖：</span> <span>不覆盖，终止生成。</span>
+                </li>
+            </ol>
+        </li>
+        <li class="param-item ">
+            <span class="param-title">额外参数</span>
+            <span class="param-desc">
+                生成条码时额外提供的参数，不同类型的条码可以有不同的参数，比如：Code39条码接受add_checksum参数，UPC-A接受make_ean参数等等,
+                不同条码类型接受的额外的参数参见：
+                <a href='https://python-barcode.readthedocs.io/en/stable/supported-formats.html'>
+                Supported Formats
+                </a>
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">分辨率</span>
+            <span class="param-desc">
+                即所生成条形码图片的dpi，若生成的图片格式为SVG，则该参数无效。勾选使用默认值时，将自动选择合适的值。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">压缩SVG</span>
+            <span class="param-desc">
+                指定是否生成经过压缩的SVG图片。该选项仅在生成条形码图片为SVG格式时有效。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">条块宽度</span>
+            <span class="param-desc">
+                条形码中每一个竖条的宽度，单位为mm。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">条块高度</span>
+            <span class="param-desc">
+                条形码中每一个竖条的高度，单位为mm。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">左右留白</span>
+            <span class="param-desc">
+                条码左右留白的宽度，单位为mm。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">字体路径</span>
+            <span class="param-desc">
+                条码下的文字所使用的字体文件路径，一般使用默认字体即可。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">字体大小</span>
+            <span class="param-desc">
+                条码下的文字的字体大小
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">文字与条码间距</span>
+            <span class="param-desc">
+                条码下的文字与条码之间的距离，单位为mm。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">背景色</span>
+            <span class="param-desc">
+                条码的背景颜色，一般为白色（即白底）。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">前景色</span>
+            <span class="param-desc">
+                条码的前景颜色，也就是条码和条码下文字的颜色，一般为黑色（即黑字）。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">文字居中</span>
+            <span class="param-desc">
+                条码下的文字是否居中显示。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">打印详细信息</span>
+            <span class="param-desc">
+                是否打印程序运行过程中的日志信息到输出区域
+            </span>
+        </li>
+        <li class="param-item"></li>
+    </ul>
+
+    <div>
+        <p><b>额外说明</b></p>
+        <ul>
+            <li>可以通过 “文件 > 保存配置” 菜单，将调试好的当前保存到配置文件中；</li>
+            <li>可以通过 “文件 > 加载配置” 菜单，从配置文件中加载预先保存的配置；</li>
+            <li>借助配置文件，可以与其他人轻松共享生成参数。</li>
+        </ul>
+    </div>
+</div>
