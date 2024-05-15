@@ -18,12 +18,9 @@ from qrcode.image.styles.moduledrawers.svg import (
 
 from ._module_drawer import ModuleDrawer
 from ._color_mask import ColorMask
-from ..res import read_res_file
-
-FUNC_DOC_FILE = "qrcode_doc.html"
 
 FUNC_NAME = QApplication.tr("二维码生成器")
-FUNC_DESC = read_res_file(FUNC_DOC_FILE)
+FUNC_DESC = QApplication.tr("")
 
 ITEMS_ERROR_CORRECTION = {
     "L": ERROR_CORRECT_L,
@@ -134,11 +131,11 @@ BUTTON_EMBEDED_IMAGE_PATH = QApplication.tr("选择")
 LABEL_VERSION = QApplication.tr("二维码版本")
 LABEL_ERROR_CORRECTION = QApplication.tr("纠错级别")
 LABEL_OPTIMIZE = QApplication.tr("优化级别")
-LABEL_BOX_SIZE = QApplication.tr("码元大小")
+LABEL_BOX_SIZE = QApplication.tr("点块大小")
 LABEL_BORDER = QApplication.tr("边框宽度")
 # LABEL_FILL_COLOR = QApplication.tr("前景色（填充色）")
 # LABEL_BACK_COLOR = QApplication.tr("背景色")
-LABEL_MODULE_DRAWER = QApplication.tr("码元形状")
+LABEL_MODULE_DRAWER = QApplication.tr("点块形状")
 LABEL_SIZE_RATIO = QApplication.tr("尺寸比例")
 LABEL_BACKGROUND_IMAGE_PATH = QApplication.tr("背景图片路径")
 LABEL_COLOR_MASK = QApplication.tr("颜色遮罩")
@@ -153,16 +150,16 @@ DESCRIPTION_ERROR_CORRECTION = QApplication.tr(
 )
 DESCRIPTION_OPTIMIZE = QApplication.tr("优化级别")
 DESCRIPTION_BOX_SIZE = QApplication.tr(
-    "码元尺寸，即指定每个二维码每个码元在最终图像上的像素大小，即每个码元渲染成多少个像素"
+    "点块尺寸，即指定每个二维码每个点块在最终图像上的像素大小，即每个点块渲染成多少个像素"
 )
 DESCRIPTION_BORDER = QApplication.tr(
     "边框宽度，即二维码四周的空白边框宽度，合适的边框宽度有助于扫描设备更容易识别二维码"
 )
 # DESCRIPTION_FILL_COLOR = QApplication.tr("填充颜色，默认为黑色")
 # DESCRIPTION_BACK_COLOR = QApplication.tr("背景颜色，默认为白色")
-DESCRIPTION_MODULE_DRAWER = QApplication.tr("控制生成二维码码元的形状")
+DESCRIPTION_MODULE_DRAWER = QApplication.tr("控制生成二维码内点块元素的形状")
 DESCRIPTION_SIZE_RATIO = QApplication.tr(
-    "该参数仅在手动指定码元形状后生效，且仅对特定几种形状（Square、GappedSquare、Circle）有效"
+    "该参数仅在手动指定元素形状后生效，且仅对特定几种形状（Square、GappedSquare、Circle）有效"
 )
 DESCRIPTION_BACKGROUND_IMAGE_PATH = QApplication.tr(
     "背景图片，若指定了该参数，则<b>颜色遮罩参数</b>不会生效"
@@ -205,8 +202,8 @@ DEFAULT_VALUE_COLOR_MASK_COLORS = DEFAULT_COLOR_MASK_COLORS
 DEFAULT_VALUE_EMBEDED_IMAGE_PATH = None
 
 ERR_MSG_UNSUPPORTED_FILE_EXTENSION = QApplication.tr("不支持的输出文件格式：{}")
-ERR_MSG_UNSUPPORTED_MODULE_DRAWER = QApplication.tr("不支持的码元形状：{}")
-ERR_MSG_UNSUPPORTED_SVG_MODULE_DRAWER = QApplication.tr("该码元形状不适用于SVG格式：{}")
+ERR_MSG_UNSUPPORTED_MODULE_DRAWER = QApplication.tr("不支持的点块形状：{}")
+ERR_MSG_UNSUPPORTED_SVG_MODULE_DRAWER = QApplication.tr("该点块形状不适用于SVG格式：{}")
 ERR_MSG_EMPTY_EMBEDED_IMAGE_PATH = QApplication.tr("嵌入图片路径不能为空")
 ERR_MSG_EMBEDED_IMAGE_NOT_FOUND = QApplication.tr("嵌入图片路径不存在")
 ERR_MSG_EMPTY_BACKGROUND_IMAGE_PATH = QApplication.tr("背景图片路径不能为空")
