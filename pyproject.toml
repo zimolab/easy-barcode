@@ -12,7 +12,7 @@ documentation = "https://github.com/zimolab/easy-barcode"
 python = "^3.12, <3.13"
 qrcode = {extras = ["pil"], version = "^7.4.2"}
 python-barcode = {extras = ["images"], version = "^0.15.1"}
-pyguiadapter = ">=0.3.6"
+pyguiadapter = ">=0.3.10"
 
 [tool.poetry.group.dev.dependencies]
 mako = "^1.3.3"

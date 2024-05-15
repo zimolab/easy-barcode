@@ -67,13 +67,13 @@ altgraph = ">=0.17"
 
 [[package]]
 name = "mako"
-version = "1.3.3"
+version = "1.3.5"
 description = "A super-fast templating language that borrows the best ideas from the existing templating languages."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Mako-1.3.3-py3-none-any.whl", hash = "sha256:5324b88089a8978bf76d1629774fcc2f1c07b82acdf00f4c5dd8ceadfffc4b40"},
-    {file = "Mako-1.3.3.tar.gz", hash = "sha256:e16c01d9ab9c11f7290eef1cfefc093fb5a45ee4a3da09e2fec2e4d1bae54e73"},
+    {file = "Mako-1.3.5-py3-none-any.whl", hash = "sha256:260f1dbc3a519453a9c856dedfe4beb4e50bd5a26d96386cb6c80856556bb91a"},
+    {file = "Mako-1.3.5.tar.gz", hash = "sha256:48dbc20568c1d276a2698b36d968fa76161bf127194907ea6fc594fa81f943bc"},
 ]
 
 [package.dependencies]
@@ -263,13 +263,13 @@ xmp = ["defusedxml"]
 
 [[package]]
 name = "pyguiadapter"
-version = "0.3.8"
+version = "0.3.10"
 description = "turn (almost) any python functions into a gui in a few lines of code"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "pyguiadapter-0.3.8-py3-none-any.whl", hash = "sha256:28a11ab032dc2bb6e8b4e1f44d3849da0a23fc12217315b40d6671de6fee49cf"},
-    {file = "pyguiadapter-0.3.8.tar.gz", hash = "sha256:3d39b686e8f23844ce1b68b0a369f53ed0c2c73d1acfe522b952f79eb7d22389"},
+    {file = "pyguiadapter-0.3.10-py3-none-any.whl", hash = "sha256:eb38f9bee85710161f578b0a49cf9d12bf5e770df26b1448ea0de07c9acfbd6d"},
+    {file = "pyguiadapter-0.3.10.tar.gz", hash = "sha256:388397e30b0f54efb59f49773d901d34d3554120e6242c1e6f1e5dd2509c8e2f"},
 ]
 
 [package.dependencies]
@@ -312,13 +312,13 @@ hook-testing = ["execnet (>=1.5.0)", "psutil", "pytest (>=2.7.3)"]
 
 [[package]]
 name = "pyinstaller-hooks-contrib"
-version = "2024.5"
+version = "2024.6"
 description = "Community maintained hooks for PyInstaller"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pyinstaller_hooks_contrib-2024.5-py2.py3-none-any.whl", hash = "sha256:0852249b7fb1e9394f8f22af2c22fa5294c2c0366157969f98c96df62410c4c6"},
-    {file = "pyinstaller_hooks_contrib-2024.5.tar.gz", hash = "sha256:aa5dee25ea7ca317ad46fa16b5afc8dba3b0e43f2847e498930138885efd3cab"},
+    {file = "pyinstaller_hooks_contrib-2024.6-py2.py3-none-any.whl", hash = "sha256:6cc88dad75261d9e1a7e0c6385139f35dcdbb16640c911a27f6078fe924a38cf"},
+    {file = "pyinstaller_hooks_contrib-2024.6.tar.gz", hash = "sha256:3c188b3a79f5cd46d96520df3934642556a1b6ce8988ec5bbce820ada424bc2b"},
 ]
 
 [package.dependencies]
@@ -506,4 +506,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12, <3.13"
-content-hash = "b38e2df763edf6e02a1e7989a854f0c6661a4f061fb0f3d2078a4c7275368f8b"
+content-hash = "e32dab2b86c02aa088e35ccffecdaec94e2243b193ca4874576ac910218d85dd"

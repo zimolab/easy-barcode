@@ -57,6 +57,7 @@ def start():
         display_icon=BARCODE_ICON_FILE,
         menus=BARCODE_MENUS,
         window_title=BARCODE_ENCODE_FUNC_NAME,
+        goto_document_start=True,
     )
     gui_adapter.add(
         qrcode_encoder.encode,
@@ -66,6 +67,7 @@ def start():
         display_icon=QRCODE_ICON_FILE,
         menus=QRCODE_MENUS,
         window_title=QRCODE_ENCODE_FUNC_NAME,
+        goto_document_start=True,
     )
 
     gui_adapter.run()
