@@ -16,7 +16,8 @@ from ._qrcode_actions import QRCODE_MENUS
 def setup_windows(gui_adapter: GUIAdapter):
     # 配置Selection窗口
     gui_adapter.selection_window_config.icon = WINDOW_ICON_FILE
-    gui_adapter.selection_window_config.icon_mode = False
+    gui_adapter.selection_window_config.icon_mode = True
+    gui_adapter.selection_window_config.icon_size = 56
     gui_adapter.selection_window_config.title = SELECTION_WINDOW_TITLE
     gui_adapter.selection_window_config.select_button_text = BUTTON_SELECTION_FUNC
     gui_adapter.selection_window_config.document_label_text = DOCUMENT_LABEL
