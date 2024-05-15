@@ -1,10 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<style lang="css">
+    .param-item {
+        margin-bottom: 10px;
+    }
+    .param-title {
+        color: blue;
+        font-weight: bold;
+    }
+    .param-desc {
 
-</body>
-</html>
+    }
+</style>
+
+<div>
+    <p><b>功能描述</b></p>
+    <p>将指定数据编码成二维码，生成二维码图片，支持将生成的图片保存到本地，支持调整各种生成参数，支持生成风格化的二维码。</p>
+</div>
+
+<div>
+    <p><b>参数说明</b></p>
+    <ul id="param-list">
+        <li class="param-item">
+            <span class="param-title">待编码数据</span>
+            <span class="param-desc">
+                待编码为二维码的文本。待编码数据的长度在不同的参数下存在不同的限制，请根据待编码数据的长度选择合适的参数。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">仅预览</span>
+            <span class="param-desc">
+               如果勾选，则不会生成图片文件，仅在输出区域预览。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">目标路径</span>
+            <span class="param-desc">
+                生成图片保存的路径，如果路径不存在，将自动创建。如果路径为空，则生成图片将保存到当前运行目录下。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">目标文件名</span>
+            <span class="param-desc">
+               生成图片的文件名，将根据文件名的后缀选择合适的图片格式。
+            </span>
+        </li>
+
+        <li class="param-item">
+            <span class="param-title">覆盖行为</span>
+            <span class="param-desc">
+                如果目标路径下存在同名文件，则根据此选项进行操作。
+            </span>
+            <ol>
+                <li class="param-item">
+                    <span>询问：</span>
+                    <span>
+                        生成前询问用户是否覆盖。
+                    </span>
+                </li>
+                <li class="param-item">
+                    <span>覆盖：</span>
+                    <span>
+                        直接覆盖。
+                    </span>
+                </li>
+                <li class="param-item">
+                    <span>不覆盖：</span> <span>不覆盖，终止生成。</span>
+                </li>
+            </ol>
+        </li>
+        <li class="param-item ">
+            <span class="param-title">二维码版本</span>
+            <span class="param-desc">
+                二维码版本定义了二维码的存储密度。每个版本都有固定的码元结构（码元是指构成QR码的黑白小方块）。
+                版本1的结构为21码元×21码元，每增加一个版本，长宽就各增加4个码元，最大的是版本40，结构为177×177码元。
+                版本越高，图案越复杂，能存储的内容就越多。
+                若勾选“使用默认值”，则根据待编码数据的长度自动选择合适的版本，当然这种选择并不能保证总是选择到最优的版本，
+                因此，在一些情况下，可能会导致生成的二维码图片尺寸过大。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">纠错级别</span>
+            <span class="param-desc">
+                二维码具有“纠错功能”。即使编码变脏或破损，也可自动恢复数据。这一“纠错能力”具备4个级别，用户可根据使用环境选择相应的级别。
+                调高级别，纠错能力也相应提高，但由于数据量会随之增加，编码尺寸也也会变大。用户应综合考虑使用环境、编码尺寸等因素后选择相应的级别。
+                在工厂等容易沾染赃物的环境下，可以选择级别Q或H，在不那么脏的环境下，且数据量较多的时候，也可以选择级别L。
+                一般情况下用户大多选择级别M(15%)。各个级别对应的纠错率如下：
+            </span>
+            <ul>
+                <li>L：约7%</li>
+                <li>M：约15%</li>
+                <li>Q：约25%</li>
+                <li>H：约30%</li>
+            </ul>
+
+        </li>
+        <li class="param-item">
+            <span class="param-title">优化级别</span>
+            <span class="param-desc">
+                数据将被分割成多个块（chunk），以通过找到至少具有此长度的更压缩的模式来优化二维码的大小。将其设置为0将完全避免进行优化。            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">码元大小</span>
+            <span class="param-desc">
+                每个码元所占用的像素。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">边框宽度</span>
+            <span class="param-desc">
+                二维码周边空白区域的宽度，单位为码元。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">码元形状</span>
+            <span class="param-desc">
+                码元的形状，一般二维码的码元形状为方形（方格），但用户也可指定其他形状，例如：圆点、圆角方格、小方格、竖条、横条等。
+                需要注意的是，SVG格式的二维码仅支持方形（方格）、圆点两种码元形状。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">尺寸比例</span>
+            <span class="param-desc">
+                该参数仅在指定码元形状时有效，且仅对特定几种码元形状有效，如方形（方格）、小方格、圆点。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">背景图片路径</span>
+            <span class="param-desc">
+                可以指定二维码的背景图片，背景图片将覆盖二维码的背景色，若指定了该参数，则二维码的背景色将无效，即颜色遮罩参数不会生效。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">颜色遮罩</span>
+            <span class="param-desc">
+                该参数指定二维码的背景色的颜色模式，一般背景色模式为纯色填充，但也可指定为渐变模式，支持径向渐变和线性渐变。
+                若指定了背景图片路径，则该参数将无效。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">颜色遮罩参数</span>
+            <span class="param-desc">
+                指定颜色遮罩的参数，需根据颜色遮罩类型选择不同的参数进行调整。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">嵌入图片</span>
+            <span class="param-desc">
+               即嵌入到二维码中间的logo图片，在SVG格式下不支持嵌入图片。
+            </span>
+        </li>
+        <li class="param-item">
+            <span class="param-title">打印详细信息</span>
+            <span class="param-desc">
+                是否打印程序运行过程中的日志信息到输出区域
+            </span>
+        </li>
+        <li class="param-item"></li>
+    </ul>
+    <div>
+        <p><b>额外说明</b></p>
+        <ul>
+            <li>可以通过 “文件 > 保存配置” 菜单，将调试好的当前保存到配置文件中；</li>
+            <li>可以通过 “文件 > 加载配置” 菜单，从配置文件中加载预先保存的配置；</li>
+            <li>借助配置文件，可以与其他人轻松共享生成参数。</li>
+        </ul>
+    </div>
+</div>
