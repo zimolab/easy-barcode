@@ -15,7 +15,7 @@
 ## 二、用户界面
 ![主界面](./screenshots/主界面.png)
 ![条形码生成器](./screenshots/条码生成器.png)
-![二维码生成器](./screenshots/img.png)
+![二维码生成器](./screenshots/二维码生成器.png)
 
 ## 三、许可协议
 
