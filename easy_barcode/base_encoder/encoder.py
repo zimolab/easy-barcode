@@ -49,8 +49,6 @@ class BaseEncoder(object):
         if not os.path.isfile(dest_filepath):
             return
 
-        print(type(behavior))
-
         if behavior == OverwriteBehavior.NotOverwrite:
             self.error(ERR_MSG_OVERWRITE_NOT_ALLOWED)
             raise OverwriteNotAllowed(ERR_MSG_OVERWRITE_NOT_ALLOWED)
