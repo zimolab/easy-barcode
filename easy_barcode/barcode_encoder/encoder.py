@@ -22,7 +22,6 @@ class BarcodeEncoder(BaseEncoder):
         dest_path: str = None,
         target_filename: str = None,
         text: str = None,
-        preview_only: bool = None,
         overwrite_behavior: str = None,
         extra_args: dict = None,
         dpi: int = None,
@@ -40,7 +39,6 @@ class BarcodeEncoder(BaseEncoder):
     ):
         super().encode(
             code=code,
-            preview_only=preview_only,
             dest_path=dest_path,
             target_filename=target_filename,
             overwrite_behavior=overwrite_behavior,
@@ -85,6 +83,12 @@ class BarcodeEncoder(BaseEncoder):
 
         barcode_class = get_barcode_class(barcode_type)
         output_filepath = os.path.abspath(os.path.join(dest_path, target_filename))
+
+        if target_filename:
+            preview_only = False
+        else:
+            preview_only = True
+
         with self.open_target_file(output_filepath, preview_only) as fp:
             options = {}
             self.add_options_to(

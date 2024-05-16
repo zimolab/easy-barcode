@@ -23,17 +23,6 @@ UNIVERSAL_CONFIGS = {
             line_wrap_mode=True,
         ),
     },
-    "preview_only": {
-        "widget_class": CheckBox.__name__,
-        "widget_args": CheckBoxArgs(
-            parameter_name="AS-IS",
-            label=LABEL_PREVIEW_ONLY,
-            description=DESCRIPTION_PREVIEW_ONLY,
-            default=DEFAULT_VALUE_PREVIEW_ONLY,
-            default_value_description=DEFAULT_VALUE_DESCRIPTION_PREVIEW_ONLY,
-            text=CHECKBOX_PREVIEW_ONLY,
-        ),
-    },
     "dest_path": {
         "widget_class": DirPathEdit.__name__,
         "widget_args": DirPathEditArgs(

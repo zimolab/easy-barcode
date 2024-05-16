@@ -29,17 +29,12 @@ class BaseEncoder(object):
     def _check_overwrite_behavior(
         self,
         behavior: OverwriteBehavior,
-        preview_only: bool,
         dest_path: str,
         target_filename: str,
     ):
 
-        if preview_only:
-            return
-
         if not target_filename:
-            self.error(ERR_MSG_EMPTY_DEST_FILEPATH)
-            raise ValueError(ERR_MSG_EMPTY_DEST_FILEPATH)
+            return
 
         dest_filepath = os.path.join(dest_path, target_filename)
         base_dir = os.path.dirname(dest_filepath)
@@ -67,7 +62,6 @@ class BaseEncoder(object):
         self,
         *,
         code: str = None,
-        preview_only: bool = None,
         dest_path: str = None,
         target_filename: str = None,
         overwrite_behavior: str = None,
@@ -97,9 +91,6 @@ class BaseEncoder(object):
                 f"target_filename must be a string, but got {type(target_filename)}"
             )
 
-        if preview_only and target_filename:
-            self.warning(MSG_FILE_WILL_NOT_CREATED)
-
         if not isinstance(overwrite_behavior, str):
             raise TypeError(
                 f"overwrite_behavior must be a string, but got {type(overwrite_behavior)}"
@@ -107,9 +98,7 @@ class BaseEncoder(object):
 
         overwrite_behavior = self._get_overwrite_behavior(overwrite_behavior)
 
-        self._check_overwrite_behavior(
-            overwrite_behavior, preview_only, dest_path, target_filename
-        )
+        self._check_overwrite_behavior(overwrite_behavior, dest_path, target_filename)
 
     def debug(self, message: str):
         if self._verbose:

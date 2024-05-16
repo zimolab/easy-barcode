@@ -21,7 +21,6 @@ class QRCodeEncoder(BaseEncoder):
         self,
         *,
         code: str = None,
-        preview_only: bool = None,
         dest_path: str = None,
         target_filename: str = None,
         overwrite_behavior: str = None,
@@ -38,15 +37,18 @@ class QRCodeEncoder(BaseEncoder):
         embeded_image_path: str = None,
         verbose: bool = None,
     ):
-        # ----------------- 参数归一化和参数校验阶段 -------------------------- #
         super().encode(
             code=code,
-            preview_only=preview_only,
             dest_path=dest_path,
             target_filename=target_filename,
             overwrite_behavior=overwrite_behavior,
             verbose=verbose,
         )
+
+        if target_filename:
+            preview_only = False
+        else:
+            preview_only = True
 
         self._check_target_file(target_filename, preview_only)
 
