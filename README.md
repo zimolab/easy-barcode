@@ -47,7 +47,7 @@ poetry install
 
 3、运行应用（如使用虚拟环境，则需要先激活虚拟环境）：
 ```bash
-python main.py
+python easy_barcode/main.py
 ```
 
 当然，也可以使用pyinstaller将本应用打包为单个可执行文件。
@@ -55,7 +55,7 @@ python main.py
 [easy-barcode_win.spec](easy-barcode_win.spec) 文件是为windows编写的打包配置文件，使用以下命令打包可执行文件：
 
 ```bash
-pyinstaller .\easy-barcode_win.spec --clean
+pyinstaller easy-barcode_win.spec --clean
 ```
 
 实测生成的可执行文件大小在40M左右。
